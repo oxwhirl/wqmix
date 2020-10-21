@@ -1,0 +1,37 @@
+# --- QMIX specific parameters ---
+
+# use epsilon greedy action selector
+action_selector: "multinomial"
+epsilon_start: .5
+epsilon_finish: .01
+epsilon_anneal_time: 100000
+mask_before_softmax: False
+
+runner: "episode"
+
+buffer_size: 5000
+
+# update the target network every {} episodes
+target_update_interval: 200
+
+# use the Q_Learner to train
+agent_output_type: "pi_logits"
+learner: "sac"
+double_q: False
+mixer: "qmix"
+mixing_embed_dim: 32
+hypernet_layers: 2
+hypernet_embed: 64
+
+central_loss: 1
+actor_loss: 1
+central_mixing_embed_dim: 256
+central_mixer: "ff"
+
+entropy_temp: 0.01
+
+central_action_embed: 1
+central_mac: "basic_central_mac"
+central_agent: "central_rnn"
+
+name: "sac"
