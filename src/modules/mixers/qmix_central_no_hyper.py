@@ -43,8 +43,5 @@ class QMixerCentralFF(nn.Module):
 
         y = advs + vs
 
-        if self.args.central_skip:
-            y = y + agent_qs.sum(dim=-1, keepdim=True)
-
         q_tot = y.view(bs, -1, 1)
         return q_tot
